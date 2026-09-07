@@ -1,0 +1,4 @@
+# XMON Discord Chat Exporter — Python dependencies
+# Install with: pip install -r requirements.txt
+requests>=2.31.0
+Pillow>=10.0.0

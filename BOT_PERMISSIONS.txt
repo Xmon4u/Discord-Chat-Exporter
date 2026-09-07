@@ -1,0 +1,76 @@
+============================================================
+XMON Discord Chat Exporter — Bot Permissions Guide
+==================================================
+
+Required permissions for the Discord Bot:
+
+---
+
+## [1] BOT PERMISSIONS (OAuth2 → URL Generator)
+
+## REQUIRED:
+
+[✔] View Channels           — Allows the bot to view channels
+[✔] Read Message History    — Allows the bot to read previous messages
+
+## NOT REQUIRED:
+
+[✘] Send Messages
+[✘] Manage Messages
+[✘] Administrator
+[✘] Any other permissions
+
+---
+
+## [2] PRIVILEGED GATEWAY INTENTS (Bot Settings)
+
+Where to find it:
+Discord Developer Portal
+→ Your Application
+→ Click "Bot" on the left
+→ Scroll down to "Privileged Gateway Intents"
+
+## REQUIRED:
+
+[✔] Message Content Intent — Allows the bot to read message content
+
+After enabling it, click "Save Changes".
+
+---
+
+## [3] HOW TO ADD THE BOT TO YOUR SERVER
+
+Step 1: Open Discord Developer Portal
+https://discord.com/developers/applications
+
+Step 2: Select your Application
+→ OAuth2 → URL Generator
+
+Step 3: Under SCOPES, select only:
+[✔] bot
+
+Step 4: Under BOT PERMISSIONS, select:
+[✔] View Channels
+[✔] Read Message History
+
+Step 5: Copy the Generated URL
+
+Step 6: Open the URL in your browser
+→ Select your Discord Server
+→ Click "Authorize"
+
+The bot will now be added to your server.
+
+---
+
+## SUMMARY
+
+Bot Permissions : View Channels + Read Message History
+Gateway Intent  : Message Content Intent (ON)
+
+No other permissions are required.
+This tool is read-only and does not send, edit, or delete messages.
+
+============================================================
+© XMON — Discord Chat Exporter — Read-only Tool
+===============================================
