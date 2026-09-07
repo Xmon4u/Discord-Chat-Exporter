@@ -1,7 +1,7 @@
 # XMON Discord Chat Exporter — v2.0 Pro
 
 <p align="center">
-  <img src="xmon_logo.png" alt="XMON Logo" width="120" />
+  <img src="assets/xmon_logo.png" alt="XMON Logo" width="120" />
 </p>
 
 <p align="center">
@@ -43,14 +43,18 @@
 ## 🗂️ Project Structure
 
 ```
-XMON-Discord-Chat-Exporter/
+Discord-Chat-Exporter/
 │
+├── assets/                 # Brand assets, icons & graphics
+│   ├── avatar.png          # Developer profile avatar
+│   ├── xmon_logo.png       # Primary XMON emblem
+│   └── xmon_logo_gen.png   # High-resolution banner graphic
+├── docs/                   # Documentation & setup guides
+│   └── BOT_PERMISSIONS.txt # Detailed Discord bot permissions breakdown
 ├── main.py                 # Multi-view desktop GUI application
 ├── exporter.py             # Official Discord REST API v10 extraction pipeline
 ├── Start XMON Exporter.bat # One-click Windows desktop launcher
 ├── requirements.txt        # Python library dependencies
-├── avatar.png              # Developer profile avatar
-├── xmon_logo.png           # XMON brand logo
 ├── .gitignore              # Standard Git exclusion definitions
 ├── .gitattributes         # Text normalization & line-ending controls
 └── README.md               # Project documentation & reference

@@ -96,8 +96,16 @@ FONT_NAV = ("Segoe UI", 8)
 # Helpers & Image Utilities
 # ─────────────────────────────────────────────────────────────────────────────
 def _find_file(filename: str) -> str | None:
-    p = os.path.join(os.path.dirname(os.path.abspath(__file__)), filename)
-    return p if os.path.isfile(p) else None
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    candidates = [
+        os.path.join(base_dir, filename),
+        os.path.join(base_dir, "assets", filename),
+        os.path.join(base_dir, "docs", filename),
+    ]
+    for p in candidates:
+        if os.path.isfile(p):
+            return p
+    return None
 
 
 # Cache for resized images to prevent stutter during window resize
