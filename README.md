@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-  <b>A modern, high-performance, read-only Discord message archiving suite built with Python, Tkinter, and the official Discord REST API v10.</b>
+  <b>A high-performance, read-only Discord message archiving application built with Python, Tkinter, and the official Discord REST API v10.</b>
 </p>
 
 <p align="center">
@@ -17,30 +17,30 @@
 
 ---
 
-## 🌟 Key Highlights & Features
+## Key Features
 
-- 🛡️ **100% In-Memory Security**: Your Discord Bot Token is never written to disk, registry, or any remote server. It stays purely in memory during your active session.
-- 📖 **Strictly Read-Only**: Compliant with official Discord Bot API terms. Never sends, edits, deletes, or modifies any messages.
-- ⚡ **Multi-View Dashboard**:
-  - **📤 Exporter**: Full-featured export suite with live progress indicators and instant cancellation support.
-  - **📋 Dedicated Logs**: Real-time log inspector with instant search/filter, clipboard copying, and export to `.log` file.
-  - **⚙️ Settings**: Configurable request throttling (Turbo, Standard, Safe, Ultra-Safe) and customizable default export settings.
-  - **👤 About Me**: Dedicated creator showcase featuring developer profile, bio, system specs, and direct links to **[xmon4u.github.io](https://xmon4u.github.io)**.
-  - **◎ Support**: Interactive step-by-step bot setup tutorial and common error resolution guide.
-- 🔍 **Flexible Filtering Modes**:
+- **In-Memory Security**: Your Discord Bot Token is never written to disk, the registry, or any remote server. It stays in memory only for the duration of your active session.
+- **Strictly Read-Only**: Compliant with official Discord Bot API terms. The application never sends, edits, deletes, or modifies any messages.
+- **Multi-View Dashboard**:
+  - **Exporter**: Full-featured export suite with live progress indicators and instant cancellation support.
+  - **Logs**: Real-time log inspector with instant search/filter, clipboard copying, and export to `.log` file.
+  - **Settings**: Configurable request throttling (Turbo, Standard, Safe, Ultra-Safe) and customizable default export settings.
+  - **About**: Developer profile, bio, system specs, and links to [xmon4u.github.io](https://xmon4u.github.io).
+  - **Support**: Step-by-step bot setup tutorial and common error resolution guide.
+- **Flexible Filtering Modes**:
   - **All Messages**: Complete channel history export.
   - **Webhook Only**: Extracts only automated webhook broadcasts.
   - **Specific Webhook**: Target an exact webhook by display name.
-- 📁 **Export Formats**:
-  - **TXT**: Pristine formatting with uniform multiline message indentation.
+- **Export Formats**:
+  - **TXT**: Clean formatting with uniform multiline message indentation.
   - **JSON**: Structured schema containing IDs, timestamps, authors, embeds, stickers, and attachment URLs.
   - **CSV**: Spreadsheet-ready tabular dataset for Microsoft Excel or Google Sheets.
-- 🛑 **Live Cancellation**: Safely stop an export at any point without corrupting partially retrieved data.
-- 🖥️ **High-DPI Razor Sharp UI**: Custom Windows DWM immersive dark title bar and Per-Monitor DPI font rendering.
+- **Live Cancellation**: Safely stop an export at any point without corrupting partially retrieved data.
+- **High-DPI UI**: Custom Windows DWM dark title bar with per-monitor DPI font rendering.
 
 ---
 
-## 🗂️ Project Structure
+## Project Structure
 
 ```
 Discord-Chat-Exporter/
@@ -50,33 +50,33 @@ Discord-Chat-Exporter/
 │   ├── xmon_logo.png       # Primary XMON emblem
 │   └── xmon_logo_gen.png   # High-resolution banner graphic
 ├── docs/                   # Documentation & setup guides
-│   └── BOT_PERMISSIONS.txt # Detailed Discord bot permissions breakdown
+│   └── BOT_PERMISSIONS.txt # Discord bot permissions breakdown
 ├── main.py                 # Multi-view desktop GUI application
-├── exporter.py             # Official Discord REST API v10 extraction pipeline
+├── exporter.py             # Discord REST API v10 extraction pipeline
 ├── Start XMON Exporter.bat # One-click Windows desktop launcher
 ├── requirements.txt        # Python library dependencies
-├── .gitignore              # Standard Git exclusion definitions
-├── .gitattributes         # Text normalization & line-ending controls
-└── README.md               # Project documentation & reference
+├── .gitignore              # Git exclusion definitions
+├── .gitattributes          # Text normalization & line-ending controls
+└── README.md               # Project documentation
 ```
 
 ---
 
-## 🚀 Step-by-Step Windows Setup
+## Setup (Windows)
 
-### 1. Requirements
-- **Windows 10 / 11** (64-bit recommended)
-- **Python 3.10+** (ensure **"Add Python to PATH"** is checked during setup)
+### Requirements
+- **Windows 10 / 11** (64-bit)
+- **Python 3.10+** (ensure "Add Python to PATH" is checked during setup)
 
-### 2. Installation
+### Installation
 Open Command Prompt or PowerShell in the project directory:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 3. Launching
-You can launch the application by double-clicking **`Start XMON Exporter.bat`** or via terminal:
+### Running
+Double-click **`Start XMON Exporter.bat`** or launch via terminal:
 
 ```bash
 python main.py
@@ -84,51 +84,48 @@ python main.py
 
 ---
 
-## 🤖 Discord Bot Quick Start Guide
+## Discord Bot Setup
 
 1. **Create an Application**:
-   - Navigate to the [Discord Developer Portal](https://discord.com/developers/applications).
-   - Click **"New Application"**, assign a name (e.g. `XMON Exporter`), and create it.
+   - Go to the [Discord Developer Portal](https://discord.com/developers/applications).
+   - Click **"New Application"**, give it a name (e.g. `XMON Exporter`), and confirm.
 
 2. **Enable Privileged Gateway Intents**:
-   - Go to the **Bot** tab on the left sidebar.
-   - Scroll down to **Privileged Gateway Intents** and enable:
-     - ✅ **Message Content Intent**
+   - Go to the **Bot** tab.
+   - Under **Privileged Gateway Intents**, enable **Message Content Intent**.
    - Click **Save Changes**.
 
 3. **Get Your Bot Token**:
    - In the **Bot** tab, click **"Reset Token"** and copy the generated token.
-   - *Never share your bot token with unauthorized parties.*
+   - Do not share your bot token with anyone.
 
 4. **Invite Bot to Your Server**:
    - Go to **OAuth2 → URL Generator**.
    - Check scope: `bot`.
-   - Check permissions:
-     - ✅ `View Channels`
-     - ✅ `Read Message History`
-   - Copy the authorization URL generated at the bottom and open it in your browser to invite the bot to your server.
+   - Check permissions: `View Channels` and `Read Message History`.
+   - Open the generated URL in your browser to invite the bot.
 
 5. **Copy Channel ID**:
    - In Discord Settings → **Advanced** → enable **Developer Mode**.
-   - Right-click any channel you want to archive → click **"Copy Channel ID"** (or paste the channel URL directly into XMON; it will auto-extract the ID).
+   - Right-click any channel → **Copy Channel ID** (or paste the channel URL directly into XMON; it extracts the ID automatically).
 
 ---
 
-## 👤 Developer & Creator
+## Developer
 
-**Created by XMON** — Founder & Lead Developer at **XMON Corporation**.
+**Created by XMON** — Founder & Lead Developer at XMON Corporation.
 
-- 🌐 **Official Website / Portfolio**: **[https://xmon4u.github.io](https://xmon4u.github.io)**
-- 🐙 **GitHub Profile**: **[https://github.com/Xmon4u](https://github.com/Xmon4u)**
+- Website / Portfolio: [https://xmon4u.github.io](https://xmon4u.github.io)
+- GitHub: [https://github.com/Xmon4u](https://github.com/Xmon4u)
 
 ---
 
-## 🛡️ Privacy & Legal Disclaimer
+## Privacy & Legal Disclaimer
 
 - **XMON Discord Chat Exporter** is an independent utility and is not affiliated with, authorized, maintained, or endorsed by Discord Inc.
-- All requests use the official, documented **Discord REST API v10**.
-- The software does not use user tokens ("self-bots") and is completely read-only.
-- All user tokens and channel contents stay strictly on the user's local machine.
+- All requests use the official **Discord REST API v10**.
+- The software does not use user tokens (self-bots) and is completely read-only.
+- All tokens and channel contents remain strictly on the user's local machine.
 
 ---
 
