@@ -1,134 +1,89 @@
-# XMON Discord Chat Exporter — v2.0 Pro
+# Discord Chat Exporter
 
-<p align="center">
-  <img src="assets/xmon_logo.png" alt="XMON Logo" width="120" />
-</p>
+A desktop application for archiving and exporting Discord channel message history using Python, Tkinter, and the official Discord REST API v10.
 
-<p align="center">
-  <b>A high-performance, read-only Discord message archiving application built with Python, Tkinter, and the official Discord REST API v10.</b>
-</p>
+## Overview
 
-<p align="center">
-  <a href="https://xmon4u.github.io"><img src="https://img.shields.io/badge/Developer%20Portfolio-xmon4u.github.io-blue?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Portfolio"></a>
-  <a href="https://github.com/Xmon4u"><img src="https://img.shields.io/badge/GitHub-Xmon4u-181717?style=for-the-badge&logo=github" alt="GitHub"></a>
-  <img src="https://img.shields.io/badge/Python-3.10+-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python Version">
-  <img src="https://img.shields.io/badge/API-Discord%20REST%20v10-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Discord API">
-</p>
+Discord Chat Exporter connects via a standard Discord Bot account to retrieve channel history and export it into clean text, JSON, or CSV files. The application runs entirely on your local machine and operates in read-only mode.
 
----
+## Features
 
-## Key Features
+- **Read-Only API Access**: Uses the official Discord REST API v10 without modifying, posting, or deleting server messages.
+- **Multiple Export Formats**:
+  - **TXT**: Clean, indented readable transcript with timestamps and user names.
+  - **JSON**: Structured message objects including message IDs, timestamps, authors, embeds, attachments, and reactions.
+  - **CSV**: Tabular rows formatted for Excel or spreadsheet analysis.
+- **Message Filtering**: Export complete channel history or filter specifically by webhooks and bots.
+- **Configurable Rate Limiting**: Adjust request throttling to avoid Discord API rate limits during large channel exports.
+- **Live Activity Log**: Real-time console showing API requests, progress percentage, and error diagnostics.
+- **Local Security**: Bot tokens are stored in memory only during your active session and are not written to disk or sent to external servers.
 
-- **In-Memory Security**: Your Discord Bot Token is never written to disk, the registry, or any remote server. It stays in memory only for the duration of your active session.
-- **Strictly Read-Only**: Compliant with official Discord Bot API terms. The application never sends, edits, deletes, or modifies any messages.
-- **Multi-View Dashboard**:
-  - **Exporter**: Full-featured export suite with live progress indicators and instant cancellation support.
-  - **Logs**: Real-time log inspector with instant search/filter, clipboard copying, and export to `.log` file.
-  - **Settings**: Configurable request throttling (Turbo, Standard, Safe, Ultra-Safe) and customizable default export settings.
-  - **About**: Developer profile, bio, system specs, and links to [xmon4u.github.io](https://xmon4u.github.io).
-  - **Support**: Step-by-step bot setup tutorial and common error resolution guide.
-- **Flexible Filtering Modes**:
-  - **All Messages**: Complete channel history export.
-  - **Webhook Only**: Extracts only automated webhook broadcasts.
-  - **Specific Webhook**: Target an exact webhook by display name.
-- **Export Formats**:
-  - **TXT**: Clean formatting with uniform multiline message indentation.
-  - **JSON**: Structured schema containing IDs, timestamps, authors, embeds, stickers, and attachment URLs.
-  - **CSV**: Spreadsheet-ready tabular dataset for Microsoft Excel or Google Sheets.
-- **Live Cancellation**: Safely stop an export at any point without corrupting partially retrieved data.
-- **High-DPI UI**: Custom Windows DWM dark title bar with per-monitor DPI font rendering.
-
----
-
-## Project Structure
-
-```
-Discord-Chat-Exporter/
-│
-├── assets/                 # Brand assets, icons & graphics
-│   ├── avatar.png          # Developer profile avatar
-│   ├── xmon_logo.png       # Primary XMON emblem
-│   └── xmon_logo_gen.png   # High-resolution banner graphic
-├── docs/                   # Documentation & setup guides
-│   └── BOT_PERMISSIONS.txt # Discord bot permissions breakdown
-├── main.py                 # Multi-view desktop GUI application
-├── exporter.py             # Discord REST API v10 extraction pipeline
-├── Start XMON Exporter.bat # One-click Windows desktop launcher
-├── requirements.txt        # Python library dependencies
-├── .gitignore              # Git exclusion definitions
-├── .gitattributes          # Text normalization & line-ending controls
-└── README.md               # Project documentation
-```
-
----
-
-## Setup (Windows)
+## Installation & Setup
 
 ### Requirements
-- **Windows 10 / 11** (64-bit)
-- **Python 3.10+** (ensure "Add Python to PATH" is checked during setup)
+- Windows 10 / 11 (or Linux / macOS with Tkinter)
+- Python 3.10 or newer
 
 ### Installation
-Open Command Prompt or PowerShell in the project directory:
 
 ```bash
+# Clone the repository
+git clone https://github.com/Xmon4u/Discord-Chat-Exporter.git
+cd Discord-Chat-Exporter
+
+# Install dependencies
 pip install -r requirements.txt
-```
 
-### Running
-Double-click **`Start XMON Exporter.bat`** or launch via terminal:
-
-```bash
+# Launch the application
 python main.py
 ```
 
----
+*Windows users can also launch directly by double-clicking `Start XMON Exporter.bat`.*
 
-## Discord Bot Setup
+## Discord Bot Setup Guide
+
+To export channel messages, you need a Discord bot in your server:
 
 1. **Create an Application**:
-   - Go to the [Discord Developer Portal](https://discord.com/developers/applications).
-   - Click **"New Application"**, give it a name (e.g. `XMON Exporter`), and confirm.
+   - Open the [Discord Developer Portal](https://discord.com/developers/applications).
+   - Click **New Application** and enter a name (e.g., `Chat Exporter`).
 
-2. **Enable Privileged Gateway Intents**:
-   - Go to the **Bot** tab.
-   - Under **Privileged Gateway Intents**, enable **Message Content Intent**.
+2. **Enable Message Content Intent**:
+   - In the left sidebar, navigate to **Bot**.
+   - Scroll down to **Privileged Gateway Intents** and enable **Message Content Intent**.
    - Click **Save Changes**.
 
-3. **Get Your Bot Token**:
-   - In the **Bot** tab, click **"Reset Token"** and copy the generated token.
-   - Do not share your bot token with anyone.
+3. **Copy the Bot Token**:
+   - Under the **Bot** tab, click **Reset Token** and copy your token. Keep this token private.
 
-4. **Invite Bot to Your Server**:
-   - Go to **OAuth2 → URL Generator**.
-   - Check scope: `bot`.
-   - Check permissions: `View Channels` and `Read Message History`.
-   - Open the generated URL in your browser to invite the bot.
+4. **Invite the Bot to Your Server**:
+   - Navigate to **OAuth2** > **URL Generator**.
+   - Under **Scopes**, select `bot`.
+   - Under **Bot Permissions**, check `View Channels` and `Read Message History`.
+   - Copy the generated URL, open it in your browser, and authorize the bot for your server.
 
-5. **Copy Channel ID**:
-   - In Discord Settings → **Advanced** → enable **Developer Mode**.
-   - Right-click any channel → **Copy Channel ID** (or paste the channel URL directly into XMON; it extracts the ID automatically).
+5. **Get Channel ID**:
+   - In your Discord client, open **Settings** > **Advanced** and enable **Developer Mode**.
+   - Right-click the channel you wish to export and select **Copy Channel ID**.
+   - Paste the Channel ID (or channel URL) into the exporter interface.
 
----
+## Project Structure
 
-## Developer
+```text
+Discord-Chat-Exporter/
+├── assets/                 # UI icons and graphic assets
+├── docs/                   # Setup guides and permissions reference
+├── main.py                 # Tkinter graphical user interface
+├── exporter.py             # Discord REST API message fetcher and parsers
+├── Start XMON Exporter.bat # Windows desktop launcher
+├── requirements.txt        # Python dependencies
+└── README.md
+```
 
-**Created by XMON** — Founder & Lead Developer at XMON Corporation.
+## Disclaimer
 
-- Website / Portfolio: [https://xmon4u.github.io](https://xmon4u.github.io)
-- GitHub: [https://github.com/Xmon4u](https://github.com/Xmon4u)
+This project is an independent open-source utility and is not affiliated with or endorsed by Discord Inc. Always ensure you have appropriate permissions from server owners before exporting message archives.
 
----
+## License
 
-## Privacy & Legal Disclaimer
-
-- **XMON Discord Chat Exporter** is an independent utility and is not affiliated with, authorized, maintained, or endorsed by Discord Inc.
-- All requests use the official **Discord REST API v10**.
-- The software does not use user tokens (self-bots) and is completely read-only.
-- All tokens and channel contents remain strictly on the user's local machine.
-
----
-
-<p align="center">
-  <sub>© 2026 XMON Corporation. All rights reserved.</sub>
-</p>
+This project is licensed under the MIT License.
